@@ -2,17 +2,17 @@ const container = document.querySelector(".container")
 const btnerase = document.querySelector(".erase")
 const btnred = document.querySelector(".red")
 const btnrainbow = document.querySelector(".rainbow")
+const btnpicker = document.querySelector("#colorPicker")
 const DEFAULT_COLOR = 'rainbow'
-const DEFAULT_MODE = 'color'
 const DEFAULT_SIZE = 16
 
 let currentColor = DEFAULT_COLOR
-let currentMode = DEFAULT_MODE
 let currentSize = DEFAULT_SIZE
 
 
 function setCurrentColor(newColor) {
     currentColor = newColor
+    console.log(newColor)
 }
 
 
@@ -25,6 +25,7 @@ grid()
 btnerase.onclick = () => clear();
 btnred.onclick = () => setCurrentColor('red')
 btnrainbow.onclick = () => setCurrentColor('rainbow')
+btnpicker.onchange = (e) => setCurrentColor(e.target.value)
 
 function grid() {
     for (let i = 0; i < 256; i++) {
@@ -48,9 +49,8 @@ function colorpicker(e) {
             color += letters[Math.floor(Math.random() * 16)];
         }
         e.target.style.backgroundColor = color
-    }
-    if (currentColor === 'red') {
-        e.target.style.backgroundColor = "red"
+    } else {
+        e.target.style.backgroundColor = currentColor;
     }
 
 
