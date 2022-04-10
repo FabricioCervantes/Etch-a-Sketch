@@ -1,19 +1,22 @@
 const container = document.querySelector(".container")
+const btnerase = document.querySelector(".erase")
 
 
-//Para hacer que solo pinte cuando está presionado el mouse
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
-grid()
 
-//Inicia la 
+
+grid()
+btnerase.onclick = () => clear();
+
+
 function grid() {
     for (let i = 0; i < 256; i++) {
         const square = document.createElement("div");
         square.style.height = "31.25px";
         square.style.width = "31.25px";
-
+        square.classList = "gridElements"
         square.addEventListener("mouseover", colorpicker)
         square.addEventListener("mousedown", colorpicker)
 
@@ -29,5 +32,12 @@ function colorpicker(e) {
     for (var i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
     }
-    e.target.style.backgroundColor = color;
+    e.target.style.backgroundColor = color
+
+}
+
+function clear() {
+    const gridPixels = container.querySelectorAll('.gridElements');
+    gridPixels.forEach(gridPixel => gridPixel.style.backgroundColor = '#000');
+
 }
