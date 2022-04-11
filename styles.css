@@ -25,9 +25,12 @@ body {
     gap: 32px;
 }
 
+.gridElements {}
+
 .erase,
 .red,
 .rainbow,
+.size,
 #colorPicker {
     height: 100px;
     width: 100px;
