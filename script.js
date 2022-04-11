@@ -1,17 +1,11 @@
 const container = document.querySelector(".container")
 const btnerase = document.querySelector(".erase")
-const btnred = document.querySelector(".red")
 const btnrainbow = document.querySelector(".rainbow")
 const btnpicker = document.querySelector("#colorPicker")
 const btnsize = document.querySelector(".size");
 const DEFAULT_COLOR = 'rainbow'
-const DEFAULT_SIZE = 16
 
 let currentColor = DEFAULT_COLOR
-let currentSize = DEFAULT_SIZE
-
-
-
 
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
@@ -21,11 +15,12 @@ document.body.onmouseup = () => (mouseDown = false)
 grid(10)
 btnerase.onclick = () => clear();
 btnsize.onclick = () => setCurrentSize();
-btnred.onclick = () => setCurrentColor('red')
+
 btnrainbow.onclick = () => setCurrentColor('rainbow')
 btnpicker.onchange = (e) => setCurrentColor(e.target.value)
 
 function grid(size) {
+    container.setAttribute("draggable", false)
     square_size = 500 / size;
     for (let i = 0; i < size * size; i++) {
         console.log(square_size);
